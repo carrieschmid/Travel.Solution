@@ -11,8 +11,11 @@ namespace Travel.Models
 
         public DbSet<Destination> Destinations { get; set; }
 
+        // We declare the method as protected override since we only want this method to be accessible to the class itself and we want to override the default method. Since the method doesn't return anything, we also specify void as the return value.
         protected override void OnModelCreating(ModelBuilder builder)
             {
+                // We call the builder's Entity<Type>() method which returns an EntityTypeBuilder object
+                //We call the HasData() method of the returned EntityTypeBuilder
                 builder.Entity<Destination>()
                 .HasData(
                 new Destination { DestinationId = 2, City = "Oakland", Country = "USA", Review = "Sunny, mild, rough", Rating = 2 },
